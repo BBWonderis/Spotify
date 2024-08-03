@@ -8,9 +8,27 @@ import appleLogo from "../assets/styles/svgs/appleLogo.svg";
 import facebookLogo from "../assets/styles/svgs/facebookLogo.svg";
 import { useNavigate } from "react-router-dom";
 import ToggleSwitch from "../components/ToggleSwitch";
+import { useState } from "react";
+
 function LoginPage() {
   const navigate = useNavigate();
-
+  const [formData, setFormData] = useState({
+    login: "",
+    password: ""
+  });
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: value
+      };
+    });
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(formData);
+  }
   return (
     <div className="login-page">
       <div className="login-box">
@@ -21,14 +39,18 @@ function LoginPage() {
           <LoginOptionButton name="Facebook" logo={facebookLogo} />
           <LoginOptionButton name="Apple" logo={appleLogo} />
         </div>
+
         <HorizontalLine />
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className="input-element email">
             <h6>E-mail or username</h6>
             <input
-              type="email"
+              type="text"
               placeholder="E-mail or username"
               className="email-input"
+              value={formData.login}
+              onChange={handleChange}
+              name="login"
             />
           </div>
 
@@ -39,11 +61,18 @@ function LoginPage() {
                 type="password"
                 placeholder="Password"
                 className="password-input"
+                onChange={handleChange}
+                value={formData.password}
+                name="password"
               />
               <button type="button">
                 <img src={hideIcon} className="hide-icon" />
               </button>
             </div>
+          </div>
+          <div className="remember-me">
+            <ToggleSwitch className="remember-me-switch" />
+            <p>Remember me</p>
           </div>
           <div className="submit">
             <button className="submit-button">Login</button>
