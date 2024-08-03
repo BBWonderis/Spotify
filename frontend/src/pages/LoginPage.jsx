@@ -7,6 +7,7 @@ import gooleLogo from "../assets/styles/svgs/googleLogo.svg";
 import appleLogo from "../assets/styles/svgs/appleLogo.svg";
 import facebookLogo from "../assets/styles/svgs/facebookLogo.svg";
 import { useNavigate } from "react-router-dom";
+import ToggleSwitch from "../components/ToggleSwitch";
 function LoginPage() {
   const navigate = useNavigate();
 
