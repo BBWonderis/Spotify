@@ -1,4 +1,5 @@
 import "../assets/styles/Sign.css";
+import "../assets/styles/RegisterPage.css";
 import spotifyLogo from "../assets/styles/svgs/spotifyLogo.svg";
 import HorizontalLine from "../components/HorizontalLine";
 import LoginOptionButton from "../components/LoginOptionButton";

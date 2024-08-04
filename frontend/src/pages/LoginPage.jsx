@@ -1,6 +1,7 @@
 import spotifyLogo from "../assets/styles/svgs/spotifyLogo.svg";
 import hideIcon from "../assets/styles/svgs/hideIcon.svg";
 import "../assets/styles/Sign.css";
+import "../assets/styles/LoginPage.css";
 import HorizontalLine from "../components/HorizontalLine";
 import LoginOptionButton from "../components/LoginOptionButton";
 import gooleLogo from "../assets/styles/svgs/googleLogo.svg";

@@ -1,4 +1,4 @@
-.login-page {
+.login {
   background: rgb(0, 0, 0);
   background: rgb(0, 0, 0);
   background: rgb(0, 0, 0);
@@ -12,12 +12,9 @@
     rgba(60, 60, 60, 1) 100%
   );
 }
-.login-page .login-box {
-  /* background-color: var(--main-bg-color); */
-  background-color: aqua;
+.login .container {
   border-radius: 10px;
 }
-
 .login-box h3 {
   width: 75%;
 }
@@ -46,12 +43,15 @@
 .login-box .remember-me {
   display: flex;
   align-items: center;
-
   width: 100%;
-  margin-left: 47%;
+  gap: 10px;
   margin-bottom: 20px;
 }
-.login-page .remember-me p {
-  font-size: 11px;
+.login .remember-me p {
+  font-size: 12px;
   font-weight: 500;
+}
+.login .hr {
+  width: 100%;
+  background-color: aquamarine;
 }

@@ -9,9 +9,8 @@ const Switch = styled(BaseSwitch)`
   width: 30px;
   height: 16px;
   background: var(--outline-grey);
-
   border-radius: 10px;
-  margin: 10px;
+
   cursor: pointer;
   transition: all 0.2s ease;
 
