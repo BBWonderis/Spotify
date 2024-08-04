@@ -1,0 +1,57 @@
+.login-page {
+  background: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(29, 29, 29, 1) 40%,
+    rgba(45, 45, 45, 1) 70%,
+    rgba(60, 60, 60, 1) 100%
+  );
+}
+.login-page .login-box {
+  /* background-color: var(--main-bg-color); */
+  background-color: aqua;
+  border-radius: 10px;
+}
+
+.login-box h3 {
+  width: 75%;
+}
+.login-box .password-reset-link {
+  font-size: 15px;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
+}
+.login-box .sign-up-link {
+  color: gray;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 50px;
+}
+.login-box .sign-up-link strong {
+  font-weight: 500;
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.login-box .password-reset-link:hover,
+.login-box .sign-up-link strong:hover {
+  color: var(--spotify-green);
+}
+.login-box .remember-me {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  margin-left: 47%;
+  margin-bottom: 20px;
+}
+.login-page .remember-me p {
+  font-size: 11px;
+  font-weight: 500;
+}

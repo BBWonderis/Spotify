@@ -1,6 +1,6 @@
 import spotifyLogo from "../assets/styles/svgs/spotifyLogo.svg";
 import hideIcon from "../assets/styles/svgs/hideIcon.svg";
-import "../assets/styles/LoginPage.css";
+import "../assets/styles/Sign.css";
 import HorizontalLine from "../components/HorizontalLine";
 import LoginOptionButton from "../components/LoginOptionButton";
 import gooleLogo from "../assets/styles/svgs/googleLogo.svg";
@@ -30,11 +30,11 @@ function LoginPage() {
     console.log(formData);
   }
   return (
-    <div className="login-page">
-      <div className="login-box">
+    <div className="login page">
+      <div className="login-box container">
         <img src={spotifyLogo} alt="spotify-logo" className="spotify-logo" />
         <h1>Log in to Spotify</h1>
-        <div className="login-with">
+        <div className="sign-options">
           <LoginOptionButton name="Google" logo={gooleLogo} />
           <LoginOptionButton name="Facebook" logo={facebookLogo} />
           <LoginOptionButton name="Apple" logo={appleLogo} />
@@ -56,7 +56,7 @@ function LoginPage() {
 
           <div className="input-element password">
             <h6>Password</h6>
-            <div className="input">
+            <div className="password">
               <input
                 type="password"
                 placeholder="Password"

@@ -1,7 +1,6 @@
 .button-element {
   position: relative;
   height: 2.8rem;
-  width: 48%;
   border: 1px solid var(--outline-grey);
   border-radius: 20px;
   display: flex;
