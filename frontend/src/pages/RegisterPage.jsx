@@ -28,6 +28,7 @@ function RegisterPage() {
           </div>
         </form>
         <HorizontalLine />
+
         <div className="sign-options">
           <LoginOptionButton name="Google" logo={gooleLogo} />
           <LoginOptionButton name="Facebook" logo={facebookLogo} />
