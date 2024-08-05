@@ -8,8 +8,8 @@
   align-items: center;
 }
 .page .container {
-  width: 40%;
-  max-width: 370px;
+  width: 22%;
+  max-width: 320px;
   min-width: 300px;
   height: auto;
 
@@ -19,7 +19,7 @@
   color: white;
   background-color: var(--main-bg-color);
 
-  padding: 20px 6% 0 6%;
+  padding: 20px 5% 0 5%;
 }
 .page .container .spotify-logo {
   width: 15%;
