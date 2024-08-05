@@ -27,13 +27,16 @@ function RegisterPage() {
             <button className="submit-button">Continue</button>
           </div>
         </form>
-        <HorizontalLine />
+        <div className="splitter">
+          <HorizontalLine text="or" />
+        </div>
 
         <div className="sign-options">
           <LoginOptionButton name="Google" logo={gooleLogo} />
           <LoginOptionButton name="Facebook" logo={facebookLogo} />
           <LoginOptionButton name="Apple" logo={appleLogo} />
         </div>
+        <HorizontalLine />
       </div>
     </div>
   );

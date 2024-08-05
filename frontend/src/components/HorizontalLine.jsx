@@ -1,4 +1,10 @@
-function HorizontalLine() {
-  return <div style={{ height: "1px" }} className="hr"></div>;
+import "../assets/styles/HorizontalLine.css";
+
+function HorizontalLine(props) {
+  return (
+    <div className="hr">
+      <p>{props.text}</p>
+    </div>
+  );
 }
 export default HorizontalLine;

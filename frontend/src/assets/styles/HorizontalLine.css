@@ -1,0 +1,21 @@
+@import url("./mainColors.css");
+
+.hr {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 1px;
+  background-color: var(--outline-grey);
+  width: 100%;
+}
+
+.hr::before,
+.hr::after {
+  content: "";
+}
+.hr p {
+  font-size: 14px;
+  margin: 0 10px;
+  padding: 0 5px;
+}
