@@ -7,15 +7,40 @@ import gooleLogo from "../assets/styles/svgs/googleLogo.svg";
 import appleLogo from "../assets/styles/svgs/appleLogo.svg";
 import facebookLogo from "../assets/styles/svgs/facebookLogo.svg";
 import EmailInput from "../components/EmailInput";
+import PasswordInput from "../components/PasswordInput.jsx";
+import { useState } from "react";
+import UsernameInput from "../components/UsernameInput.jsx";
 
 function RegisterPage() {
+  const [formData, setFormData] = useState({
+    login: "",
+    password: ""
+  });
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: value
+      };
+    });
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(formData);
+  }
   return (
     <div className="register page">
       <div className="login-box container">
         <img src={spotifyLogo} alt="spotify-logo" className="spotify-logo" />
         <h1>Register and start listening</h1>
-        <form action="">
-          <EmailInput />
+        <form action="" onSubmit={handleSubmit}>
+          <ul style={{ width: "100%", padding: 0 }}>
+            <EmailInput />
+            <UsernameInput />
+            <PasswordInput handleChange={handleChange} formData={formData} />
+            <PasswordInput handleChange={handleChange} formData={formData} />
+          </ul>
           <div className="submit">
             <button className="submit-button">Continue</button>
           </div>
