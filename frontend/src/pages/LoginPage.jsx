@@ -1,5 +1,5 @@
 import spotifyLogo from "../assets/styles/svgs/spotifyLogo.svg";
-import hideIcon from "../assets/styles/svgs/hideIcon.svg";
+
 import "../assets/styles/Sign.css";
 import "../assets/styles/LoginPage.css";
 import HorizontalLine from "../components/HorizontalLine";
@@ -10,6 +10,8 @@ import facebookLogo from "../assets/styles/svgs/facebookLogo.svg";
 import { useNavigate } from "react-router-dom";
 import ToggleSwitch from "../components/ToggleSwitch";
 import { useState } from "react";
+import EmailInput from "../components/EmailInput";
+import PasswordInput from "../components/PasswordInput";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -43,34 +45,8 @@ function LoginPage() {
 
         <HorizontalLine />
         <form onSubmit={handleSubmit}>
-          <div className="input-element email">
-            <h6>E-mail or username</h6>
-            <input
-              type="text"
-              placeholder="E-mail or username"
-              className="email-input"
-              value={formData.login}
-              onChange={handleChange}
-              name="login"
-            />
-          </div>
-
-          <div className="input-element password">
-            <h6>Password</h6>
-            <div className="password">
-              <input
-                type="password"
-                placeholder="Password"
-                className="password-input"
-                onChange={handleChange}
-                value={formData.password}
-                name="password"
-              />
-              <button type="button">
-                <img src={hideIcon} className="hide-icon" />
-              </button>
-            </div>
-          </div>
+          <EmailInput />
+          <PasswordInput handleChange={handleChange} formData={formData} />
           <div className="remember-me">
             <ToggleSwitch className="remember-me-switch" />
             <p>Remember me</p>
