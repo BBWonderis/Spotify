@@ -14,10 +14,13 @@ import UsernameInput from "../components/UsernameInput.jsx";
 function RegisterPage() {
   const [formData, setFormData] = useState({
     login: "",
-    password: ""
+    username: "",
+    password: "",
+    passwordCheck: ""
   });
   function handleChange(event) {
     const { name, value } = event.target;
+    console.log(name);
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
@@ -36,10 +39,14 @@ function RegisterPage() {
         <h1>Register and start listening</h1>
         <form action="" onSubmit={handleSubmit}>
           <ul style={{ width: "100%", padding: 0 }}>
-            <EmailInput />
-            <UsernameInput />
+            <EmailInput handleChange={handleChange} formData={formData} />
+            <UsernameInput handleChange={handleChange} formData={formData} />
             <PasswordInput handleChange={handleChange} formData={formData} />
-            <PasswordInput handleChange={handleChange} formData={formData} />
+            <PasswordInput
+              handleChange={handleChange}
+              formData={formData}
+              passwordCheck={true}
+            />
           </ul>
           <div className="submit">
             <button className="submit-button">Continue</button>

@@ -10,8 +10,12 @@ function PasswordInput(props) {
           placeholder="Password"
           className="password-input"
           onChange={props.handleChange}
-          value={props.formData.password}
-          name="password"
+          value={
+            props.passwordCheck
+              ? props.formData.passwordCheck
+              : props.formData.password
+          }
+          name={props.passwordCheck ? "passwordCheck" : "password"}
         />
         <button type="button">
           <img src={hideIcon} className="hide-icon" />
