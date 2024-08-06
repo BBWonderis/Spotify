@@ -1,6 +1,7 @@
 from flask import jsonify, request
-from config import app, db
+from config import app, db, cors, cross_origin
 from models import User
+
 
 @app.route('/users', methods=['GET'])
 def get_users():
@@ -9,11 +10,11 @@ def get_users():
 
     return jsonify({'users': json_users})
 
-@app.route('/create_users', methods=['POST'])
+@app.route('/create_user', methods=['POST'])
 def create_users():
 
     data = request.get_json()
-    username, password, email = data['username'], data['password'], data['email']
+    username, password, email = data['username'], data['password'] ,data['email']
     if not username or not password or not email:
         return jsonify({'error': 'Username or password or email is empty'}), 400
 

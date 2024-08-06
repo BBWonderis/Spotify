@@ -30,16 +30,13 @@ function RegisterPage() {
       };
     });
   }
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(formData);
-  }
+
   return (
     <div className="register page">
       <div className="login-box container">
         <img src={spotifyLogo} alt="spotify-logo" className="spotify-logo" />
         <h1>Register and start listening</h1>
-        <form action="" onSubmit={handleSubmit}>
+        <form action="">
           <ul style={{ width: "100%", padding: 0 }}>
             <EmailInput handleChange={handleChange} formData={formData} />
             <UsernameInput handleChange={handleChange} formData={formData} />

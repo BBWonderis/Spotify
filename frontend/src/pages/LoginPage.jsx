@@ -30,8 +30,11 @@ function LoginPage() {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(formData);
+    fetch("http://127.0.0.1:5000/users")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   }
+
   return (
     <div className="login page">
       <div className="login-box container">
