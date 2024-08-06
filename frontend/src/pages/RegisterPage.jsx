@@ -10,8 +10,10 @@ import EmailInput from "../components/EmailInput";
 import PasswordInput from "../components/PasswordInput.jsx";
 import { useState } from "react";
 import UsernameInput from "../components/UsernameInput.jsx";
+import { useNavigate } from "react-router-dom";
 
 function RegisterPage() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     login: "",
     username: "",
@@ -63,7 +65,8 @@ function RegisterPage() {
         </div>
         <HorizontalLine />
         <div className="sign-up-link">
-          Already have account? <strong>Sign up</strong>.
+          Already have account?{" "}
+          <strong onClick={() => navigate("/login")}>Sign up</strong>.
         </div>
       </div>
     </div>

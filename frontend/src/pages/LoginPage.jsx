@@ -45,7 +45,7 @@ function LoginPage() {
 
         <HorizontalLine />
         <form onSubmit={handleSubmit}>
-          <EmailInput />
+          <EmailInput handleChange={handleChange} formData={formData} />
           <PasswordInput handleChange={handleChange} formData={formData} />
           <div className="remember-me">
             <ToggleSwitch className="remember-me-switch" />
