@@ -16,7 +16,7 @@ import PasswordInput from "../components/PasswordInput";
 function LoginPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    login: "",
+    email: "",
     password: ""
   });
   function handleChange(event) {
@@ -30,6 +30,11 @@ function LoginPage() {
   }
   function handleSubmit(event) {
     event.preventDefault();
+    fetch("http://localhost:8000/sign-in", {
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify(formData)
+    });
   }
 
   return (

@@ -8,12 +8,14 @@ from .models import User
 def create_user(request):
     if request.method == 'POST':
         response = json.loads(request.body)
-        print(response)
+
         try:
             username = response["username"]
             email = response["email"]
             password = response["password"]
             passwordCheck = response["passwordCheck"]
+            if username == "" or email == "" or password == "" or passwordCheck == "":
+                return HttpResponse("Please enter both username and email and password", status=400)
         except ValueError:
             return HttpResponse("Please enter username, email and password!", status=400)
 
@@ -37,9 +39,26 @@ def user_functions(request, id):
         except User.DoesNotExist:
             return HttpResponse("User does not exist!", status=404)
         return HttpResponse(status=204)
+@csrf_exempt
+def sign_in(request):
+    if request.method == 'POST':
+        user = json.loads(request.body)
+        try:
+            email = user["email"]
+            password = user["password"]
+        except ValueError:
+            return HttpResponse("Please enter email and password!", status=400)
+
+        try:
+            if password == User.objects.values().get(email=email)["password"]:
+                return HttpResponse("Login successful!", status=200)
+            return HttpResponse("Passwords don't match!", status=400)
+        except User.DoesNotExist:
+            return HttpResponse("User not found", status=404)
+
+
 
 def autoDelete():
     for user in User.objects.all():
         if user.username != "admin":
             user.delete()
-autoDelete()

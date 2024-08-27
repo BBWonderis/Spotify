@@ -36,7 +36,7 @@ function RegisterPage() {
       method: "POST",
       mode: "cors",
       body: JSON.stringify(formData)
-    });
+    }).then((resp) => resp);
   }
 
   return (
