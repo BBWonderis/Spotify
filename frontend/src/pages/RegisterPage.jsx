@@ -15,19 +15,27 @@ import { useNavigate } from "react-router-dom";
 function RegisterPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    login: "",
+    email: "",
     username: "",
     password: "",
     passwordCheck: ""
   });
+
   function handleChange(event) {
     const { name, value } = event.target;
-    console.log(name);
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
         [name]: value
       };
+    });
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    fetch("http://localhost:8000/sign-up", {
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify(formData)
     });
   }
 
@@ -36,7 +44,7 @@ function RegisterPage() {
       <div className="login-box container">
         <img src={spotifyLogo} alt="spotify-logo" className="spotify-logo" />
         <h1>Register and start listening</h1>
-        <form action="">
+        <form action="" onSubmit={handleSubmit}>
           <ul style={{ width: "100%", padding: 0 }}>
             <EmailInput handleChange={handleChange} formData={formData} />
             <UsernameInput handleChange={handleChange} formData={formData} />

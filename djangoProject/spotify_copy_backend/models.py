@@ -8,6 +8,5 @@ class User(models.Model):
 
     def __str__(self):
         return f'{self.username} {self.email}'
-    def get_user(self, id):
-        return User.objects.values().get(pk=id)
+
 

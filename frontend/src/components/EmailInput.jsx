@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 function EmailInput(props) {
   return (
     <div className="input-element email">
@@ -6,8 +7,8 @@ function EmailInput(props) {
         type="text"
         placeholder="E-mail"
         className="email-input"
-        name="login"
-        value={props.formData.login}
+        name="email"
+        value={props.formData.email}
         onChange={props.handleChange}
       />
     </div>

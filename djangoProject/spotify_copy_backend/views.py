@@ -8,6 +8,7 @@ from .models import User
 def create_user(request):
     if request.method == 'POST':
         response = json.loads(request.body)
+        print(response)
         try:
             username = response["username"]
             email = response["email"]
@@ -25,13 +26,11 @@ def create_user(request):
 def user_functions(request, id):
     if request.method == 'GET':
         try:
-            user = User.objects.get(pk=id)
-
-
+            user = User.objects.values().get(pk=id)
         except User.DoesNotExist:
             return HttpResponse("User does not exist!", status=404)
 
-        return JsonResponse(user.get_user(id), status=200)
+        return JsonResponse(user, status=200)
     elif request.method == 'DELETE':
         try:
             User.objects.get(pk=id).delete()
@@ -39,3 +38,8 @@ def user_functions(request, id):
             return HttpResponse("User does not exist!", status=404)
         return HttpResponse(status=204)
 
+def autoDelete():
+    for user in User.objects.all():
+        if user.username != "admin":
+            user.delete()
+autoDelete()
