@@ -11,7 +11,7 @@ import PasswordInput from "../components/PasswordInput.jsx";
 import { useState } from "react";
 import UsernameInput from "../components/UsernameInput.jsx";
 import { useNavigate } from "react-router-dom";
-
+import Errorpop from "../components/Errorpop.jsx";
 function RegisterPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -19,6 +19,10 @@ function RegisterPage() {
     username: "",
     password: "",
     passwordCheck: ""
+  });
+  const [pageData, setPageData] = useState({
+    error: false,
+    errorMessage: ""
   });
 
   function handleChange(event) {
@@ -30,13 +34,36 @@ function RegisterPage() {
       };
     });
   }
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    fetch("http://localhost:8000/sign-up", {
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify(formData)
-    }).then((resp) => resp);
+    try {
+      const response = await fetch("http://localhost:8000/sign-up", {
+        method: "POST",
+        mode: "cors",
+        body: JSON.stringify(formData)
+      });
+      if (!response.ok) {
+        setPageData((prevPageData) => {
+          return {
+            ...prevPageData,
+            error: true,
+            errorMessage: response
+          };
+        });
+        throw new Error(response);
+      } else {
+        setPageData((prevPageData) => {
+          return {
+            ...prevPageData,
+            error: false,
+            errorMessage: ""
+          };
+        });
+        navigate("/home");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -44,6 +71,12 @@ function RegisterPage() {
       <div className="login-box container">
         <img src={spotifyLogo} alt="spotify-logo" className="spotify-logo" />
         <h1>Register and start listening</h1>
+        {pageData.error && (
+          <Errorpop
+            errorStatus={pageData.errorMessage.status}
+            errorStatusText={pageData.errorMessage.statusText}
+          />
+        )}
         <form action="" onSubmit={handleSubmit}>
           <ul style={{ width: "100%", padding: 0 }}>
             <EmailInput handleChange={handleChange} formData={formData} />
@@ -62,7 +95,6 @@ function RegisterPage() {
         <div className="splitter">
           <HorizontalLine text="or" />
         </div>
-
         <div className="sign-options">
           <LoginOptionButton name="Google" logo={gooleLogo} />
           <LoginOptionButton name="Facebook" logo={facebookLogo} />

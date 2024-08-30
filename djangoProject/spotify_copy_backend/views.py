@@ -15,12 +15,12 @@ def create_user(request):
             password = response["password"]
             password_check = response["passwordCheck"]
             if username == "" or email == "" or password == "" or password_check == "":
-                return HttpResponse("Please enter both username and email and password", status=400)
+                return HttpResponse("Please enter both username and email and password", status=400, reason="Email or username or password is empty")
         except KeyError:
-            return HttpResponse("Please enter username, email and password!", status=422)
+            return HttpResponse("Please enter username, email and password!", status=422, reason="Email or username or password is empty")
 
         if password != password_check:
-            return HttpResponse("Passwords do not match!", status=401)
+            return HttpResponse("Passwords do not match!", status=401, reason="Passwords do not match")
         new_user = User(username=username, email=email, password=password)
         new_user.save()
         return JsonResponse(User.objects.values().get(username=username), status=201)
